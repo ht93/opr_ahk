@@ -10,7 +10,7 @@ flagOPR := 0
     Ctrl+Shift+O: enable or disable the whole function
     Ctrl+Shift+P: User manual and current state
     z: 1 star
-    x: 2 star (bad location or cannot find the position)
+    x: 2 star (not very good and bad location)
     c: 3 star (overall not very good and very bad)
     d: 3 star (very good but not correct location by street view)
     v: 4 star (good but not perfect)
@@ -86,7 +86,7 @@ opr2star(){
     Click 1365, 220
     Random, timeWait, 100, 150
     Sleep, %timeWait%
-    Click 1405, 280
+    Click 1365, 280
     Random, timeWait, 1000, 1200
     Sleep, %timeWait%
     Click 600, 670
