@@ -10,8 +10,9 @@ flagOPR := 0
     Ctrl+Shift+O: enable or disable the whole function
     Ctrl+Shift+P: User manual and current state
     z: 1 star
-    x: 2 star (not very good and bad location)
-    c: 3 star (overall not very good and very bad)
+    x: 2 star (not very good)
+    s: 2 star (ordinary and bad location)
+    c: 3 star (overall not very good and not very bad)
     d: 3 star (very good but not correct location by street view)
     v: 4 star (good but not perfect)
     f: 4 star (very good but indoor position)
@@ -24,7 +25,9 @@ flagOPR := 0
 
 z::opr1star()
 
-x::opr2star()
+x::opr2star_1()
+
+s::opr2star_2()
 
 c::opr3star_1()
 
@@ -65,7 +68,37 @@ opr1star(){
     Click 1010, 290
 }
 
-opr2star(){
+opr2star_1(){
+    global flagOPR
+    if !flagOPR {
+        MsgBox, 0, Warning,  OPR AHK function is not enabled yet.
+        return
+    }
+    getLocation(starX, starY)
+    if starX is not integer 
+    {
+        MsgBox, 0, Warning,  Cannot find the star.
+        return
+    }
+    Click 545, %starY%
+    Random, timeWait, 100, 150
+    Sleep, %timeWait%
+    Click 1365, 170
+    Random, timeWait, 100, 150
+    Sleep, %timeWait%
+    Click 1325, 220
+    Random, timeWait, 100, 150
+    Sleep, %timeWait%
+    Click 1325, 280
+    Random, timeWait, 1000, 1200
+    Sleep, %timeWait%
+    Click 680, 670
+    Random, timeWait, 100, 150
+    Sleep, %timeWait%
+    Click 720, 755
+}
+
+opr2star_2(){
     global flagOPR
     if !flagOPR {
         MsgBox, 0, Warning,  OPR AHK function is not enabled yet.
