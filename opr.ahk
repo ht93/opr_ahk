@@ -12,7 +12,9 @@ flagOPR := 0
     z: 1 star
     x: 2 star (bad location or cannot find the position)
     c: 3 star (overall not very good and very bad)
+    d: 3 star (very good but not correct location by street view)
     v: 4 star (good but not perfect)
+    f: 4 star (very good but indoor position)
     b: 5 star (very good with visual 5* culture 4* position 4*)
     g: 5 star (very good with visual 4* culture 5* position 4*)
     t: 5 star (very good with visual 5* culture 5* position 5*)
@@ -24,9 +26,13 @@ z::opr1star()
 
 x::opr2star()
 
-c::opr3star()
+c::opr3star_1()
 
-v::opr4star()
+d::opr3star_2()
+
+v::opr4star_1()
+
+f::opr4star_2()
 
 b::opr5star_1()
 
@@ -89,7 +95,7 @@ opr2star(){
     Click 680, 755
 }
 
-opr3star(){
+opr3star_1(){
     global flagOPR
     if !flagOPR {
         MsgBox, 0, Warning,  flagOPR is not set yet.
@@ -119,7 +125,37 @@ opr3star(){
     Click 720, 755
 }
 
-opr4star(){
+opr3star_2(){
+    global flagOPR
+    if !flagOPR {
+        MsgBox, 0, Warning,  flagOPR is not set yet.
+        return
+    }
+    getLocation(starX, starY)
+    if starX is not integer 
+    {
+        MsgBox, 0, Warning,  Cannot find the star.
+        return
+    }
+    Click 585, %starY%
+    Random, timeWait, 100, 150
+    Sleep, %timeWait%
+    Click 1445, 170
+    Random, timeWait, 100, 150
+    Sleep, %timeWait%
+    Click 1405, 220
+    Random, timeWait, 100, 150
+    Sleep, %timeWait%
+    Click 1445, 280
+    Random, timeWait, 1000, 1200
+    Sleep, %timeWait%
+    Click 640, 670
+    Random, timeWait, 100, 150
+    Sleep, %timeWait%
+    Click 720, 755
+}
+
+opr4star_1(){
     global flagOPR
     if !flagOPR {
         MsgBox, 0, Warning,  flagOPR is not set yet.
@@ -147,6 +183,36 @@ opr4star(){
     Random, timeWait, 100, 150
     Sleep, %timeWait%
     Click 760, 755
+}
+
+opr4star_2(){
+    global flagOPR
+    if !flagOPR {
+        MsgBox, 0, Warning,  flagOPR is not set yet.
+        return
+    }
+    getLocation(starX, starY)
+    if starX is not integer 
+    {
+        MsgBox, 0, Warning,  Cannot find the star.
+        return
+    }
+    Click 625, %starY%
+    Random, timeWait, 100, 150
+    Sleep, %timeWait%
+    Click 1445, 170
+    Random, timeWait, 100, 150
+    Sleep, %timeWait%
+    Click 1405, 220
+    Random, timeWait, 100, 150
+    Sleep, %timeWait%
+    Click 1445, 280
+    Random, timeWait, 1000, 1200
+    Sleep, %timeWait%
+    Click 680, 670
+    Random, timeWait, 100, 150
+    Sleep, %timeWait%
+    Click 720, 755
 }
 
 opr5star_1(){

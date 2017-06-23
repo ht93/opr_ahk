@@ -10,7 +10,9 @@
 - `z`: 1 star
 - `x`: 2 star (bad location or cannot find the position)
 - `c`: 3 star (overall not very good and very bad)
+- `d`: 4 star (very good but not correct location by street view)
 - `v`: 4 star (good but not perfect)
+- `f`: 4 star (very good but indoor position)
 - `b`: 5 star (very good with visual 5* culture 4* position 4*)
 - `g`: 5 star (very good with visual 4* culture 5* position 4*)
 - `t`: 5 star (perfect with visual 5* culture 5* position 5*)
