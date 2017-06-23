@@ -5,8 +5,8 @@
 2. This code is fit to **Chrome** with **1920x1080** screen resolution. Please adjust to it to fit your own setup.
 
 ### Control
-- `Ctrl+Shift+O`: enable or disable the whole function
-- `Ctrl+Shift+P`: User manual and current state
+- `Ctrl+Shift+o`: enable or disable the whole function
+- `Ctrl+Shift+p`: User manual and current state
 - `z`: 1 star
 - `x`: 2 star (bad location or cannot find the position)
 - `c`: 3 star (overall not very good and very bad)
