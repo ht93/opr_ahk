@@ -80,7 +80,7 @@ oprDuplicate(){
     getDuplicateLocation(starX, starY)
     if starX is not integer 
     {
-        MsgBox, 0, Warning,  Cannot find the star.
+        MsgBox, 0, Warning,  Cannot find the "Mark as Duplicate".
         return
     }
     Click %starX%, %starY%
