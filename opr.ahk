@@ -16,7 +16,7 @@ flagOPR := 0
     b: 5 star (very good with visual 5* culture 4* position 4*)
     g: 5 star (very good with visual 4* culture 5* position 4*)
     t: 5 star (very good with visual 5* culture 5* position 5*)
-    Alt+Space: submit
+    Space: submit
     esc: stop the script
 )
 
@@ -34,7 +34,7 @@ g::opr5star_2()
 
 t::opr5star_3()
 
-!Space::oprSubmit()
+Space::oprSubmit()
 
 esc::exitapp
 
