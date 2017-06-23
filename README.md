@@ -1,7 +1,7 @@
 # User Manual
 
 ### Pre request
-1. Please use the opr.exe directly.
+1. Please copy `opr.exe`, `dup.png` and `save.bmp` to same directory and open `opr.exe`.
 2. This code is fit to **Chrome** with **1920x1080** screen resolution. Please adjust to it to fit your own setup.
 
 ### Control
