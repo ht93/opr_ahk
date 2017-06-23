@@ -1,7 +1,7 @@
 # User Manual
 
 ### Pre request
-1. You need [AutoHotKey](https://autohotkey.com/) to use this (Windows only). My version is v1.1.22.07.
+1. Please use the opr.exe directly.
 2. This code is fit to **Chrome** with **1920x1080** screen resolution. Please adjust to it to fit your own setup.
 
 ### Control
