@@ -5,12 +5,19 @@ flagOPR := 0
 ^+p::MsgBox, 0, info,   
 ( LTrim
     flagOPR is a %flagOPR%
-    test line2
-    test line3
-    test line4
-    test line5
-    test line6
-    test line7
+    =====================================================
+    User Manual:
+    Ctrl+Shift+O: enable or disable the whole function
+    Ctrl+Shift+P: User manual and current state
+    z: 1 star
+    x: 2 star (bad location or cannot find the position)
+    c: 3 star (overall not very good and very bad)
+    v: 4 star (good but not perfect)
+    b: 5 star (very good with visual 5* culture 4* position 4*)
+    g: 5 star (very good with visual 4* culture 5* position 4*)
+    t: 5 star (very good with visual 5* culture 5* position 5*)
+    Alt+Space: submit
+    esc: stop the script
 )
 
 z::opr1star()
@@ -21,7 +28,11 @@ c::opr3star()
 
 v::opr4star()
 
-b::opr5star()
+b::opr5star_1()
+
+g::opr5star_2()
+
+t::opr5star_3()
 
 !Space::oprSubmit()
 
@@ -138,7 +149,7 @@ opr4star(){
     Click 760, 755
 }
 
-opr5star(){
+opr5star_1(){
     global flagOPR
     if !flagOPR {
         MsgBox, 0, Warning,  flagOPR is not set yet.
@@ -163,6 +174,66 @@ opr5star(){
     Random, timeWait, 1000, 1200
     Sleep, %timeWait%
     Click 720, 670
+    Random, timeWait, 100, 150
+    Sleep, %timeWait%
+    Click 760, 755
+}
+
+opr5star_2(){
+    global flagOPR
+    if !flagOPR {
+        MsgBox, 0, Warning,  flagOPR is not set yet.
+        return
+    }
+    getLocation(starX, starY)
+    if starX is not integer 
+    {
+        MsgBox, 0, Warning,  Cannot find the star.
+        return
+    }
+    Click %starX%, %starY%
+    Random, timeWait, 100, 150
+    Sleep, %timeWait%
+    Click 1445, 170
+    Random, timeWait, 100, 150
+    Sleep, %timeWait%
+    Click 1445, 220
+    Random, timeWait, 100, 150
+    Sleep, %timeWait%
+    Click 1405, 280
+    Random, timeWait, 1000, 1200
+    Sleep, %timeWait%
+    Click 720, 670
+    Random, timeWait, 100, 150
+    Sleep, %timeWait%
+    Click 760, 755
+}
+
+opr5star_3(){
+    global flagOPR
+    if !flagOPR {
+        MsgBox, 0, Warning,  flagOPR is not set yet.
+        return
+    }
+    getLocation(starX, starY)
+    if starX is not integer 
+    {
+        MsgBox, 0, Warning,  Cannot find the star.
+        return
+    }
+    Click %starX%, %starY%
+    Random, timeWait, 100, 150
+    Sleep, %timeWait%
+    Click 1445, 170
+    Random, timeWait, 100, 150
+    Sleep, %timeWait%
+    Click 1445, 220
+    Random, timeWait, 100, 150
+    Sleep, %timeWait%
+    Click 1445, 280
+    Random, timeWait, 1000, 1200
+    Sleep, %timeWait%
+    Click 760, 670
     Random, timeWait, 100, 150
     Sleep, %timeWait%
     Click 760, 755
