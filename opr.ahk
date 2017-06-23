@@ -47,7 +47,7 @@ esc::exitapp
 opr1star(){
     global flagOPR
     if !flagOPR {
-        MsgBox, 0, Warning,  flagOPR is not set yet.
+        MsgBox, 0, Warning,  OPR AHK function is not enabled yet.
         return
     }
     getLocation(starX, starY)
@@ -68,7 +68,7 @@ opr1star(){
 opr2star(){
     global flagOPR
     if !flagOPR {
-        MsgBox, 0, Warning,  flagOPR is not set yet.
+        MsgBox, 0, Warning,  OPR AHK function is not enabled yet.
         return
     }
     getLocation(starX, starY)
@@ -98,7 +98,7 @@ opr2star(){
 opr3star_1(){
     global flagOPR
     if !flagOPR {
-        MsgBox, 0, Warning,  flagOPR is not set yet.
+        MsgBox, 0, Warning,  OPR AHK function is not enabled yet.
         return
     }
     getLocation(starX, starY)
@@ -128,7 +128,7 @@ opr3star_1(){
 opr3star_2(){
     global flagOPR
     if !flagOPR {
-        MsgBox, 0, Warning,  flagOPR is not set yet.
+        MsgBox, 0, Warning,  OPR AHK function is not enabled yet.
         return
     }
     getLocation(starX, starY)
@@ -158,7 +158,7 @@ opr3star_2(){
 opr4star_1(){
     global flagOPR
     if !flagOPR {
-        MsgBox, 0, Warning,  flagOPR is not set yet.
+        MsgBox, 0, Warning,  OPR AHK function is not enabled yet.
         return
     }
     getLocation(starX, starY)
@@ -188,7 +188,7 @@ opr4star_1(){
 opr4star_2(){
     global flagOPR
     if !flagOPR {
-        MsgBox, 0, Warning,  flagOPR is not set yet.
+        MsgBox, 0, Warning,  OPR AHK function is not enabled yet.
         return
     }
     getLocation(starX, starY)
@@ -218,7 +218,7 @@ opr4star_2(){
 opr5star_1(){
     global flagOPR
     if !flagOPR {
-        MsgBox, 0, Warning,  flagOPR is not set yet.
+        MsgBox, 0, Warning,  OPR AHK function is not enabled yet.
         return
     }
     getLocation(starX, starY)
@@ -248,7 +248,7 @@ opr5star_1(){
 opr5star_2(){
     global flagOPR
     if !flagOPR {
-        MsgBox, 0, Warning,  flagOPR is not set yet.
+        MsgBox, 0, Warning,  OPR AHK function is not enabled yet.
         return
     }
     getLocation(starX, starY)
@@ -278,7 +278,7 @@ opr5star_2(){
 opr5star_3(){
     global flagOPR
     if !flagOPR {
-        MsgBox, 0, Warning,  flagOPR is not set yet.
+        MsgBox, 0, Warning,  OPR AHK function is not enabled yet.
         return
     }
     getLocation(starX, starY)
@@ -308,7 +308,7 @@ opr5star_3(){
 oprSubmit(){
     global flagOPR
     if !flagOPR {
-        MsgBox, 0, Warning,  flagOPR is not set yet.
+        MsgBox, 0, Warning,  OPR AHK function is not enabled yet.
         return
     }
     Click 980, 880
