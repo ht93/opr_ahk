@@ -10,6 +10,7 @@ flagOPR := 0
     Ctrl+Shift+O: enable or disable the whole function
     Ctrl+Shift+P: User manual and current state
     z: 1 star
+    a: duplicate (left click on the duplicated picture by yourself)
     x: 2 star (not very good)
     s: 2 star (ordinary and bad location)
     c: 3 star (overall not very good and not very bad)
@@ -24,6 +25,8 @@ flagOPR := 0
 )
 
 z::opr1star()
+
+a::oprDuplicate()
 
 x::opr2star_1()
 
@@ -60,6 +63,27 @@ opr1star(){
         return
     }
     Click 505, %starY%
+    Random, timeWait, 500, 550
+    Sleep, %timeWait%
+    Click 1010, 290
+    Random, timeWait, 500, 550
+    Sleep, %timeWait%
+    Click 1010, 290
+}
+
+oprDuplicate(){
+    global flagOPR
+    if !flagOPR {
+        MsgBox, 0, Warning,  OPR AHK function is not enabled yet.
+        return
+    }
+    getDuplicateLocation(starX, starY)
+    if starX is not integer 
+    {
+        MsgBox, 0, Warning,  Cannot find the star.
+        return
+    }
+    Click %starX%, %starY%
     Random, timeWait, 500, 550
     Sleep, %timeWait%
     Click 1010, 290
@@ -358,22 +382,10 @@ getLocation(ByRef OutputVarX, ByRef OutputVarY){
     OutputVarY := OutputVarY + 10
 }
 
-domino66Click(Interval=100){
-
-   static Toggler
-
-   Toggler := !Toggler
-
-   TPer := Toggler ? Interval : "off"
-
-   SetTimer, ClickClick, %TPer%
-
-   return
-
-   ClickClick:
-
-   Click
-
-   return
-
+getDuplicateLocation(ByRef OutputVarX, ByRef OutputVarY){
+    IfNotExist, dup.png
+        MsgBox Error: Your file either doesn't exist or isn't in this location.
+    ImageSearch, OutputVarX, OutputVarY, 970, 500, 1575, 900, dup.png
+    OutputVarX := OutputVarX + 15
+    OutputVarY := OutputVarY + 10
 }
