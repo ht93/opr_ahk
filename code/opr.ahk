@@ -10,7 +10,7 @@ flagOPR := 0
     Ctrl+Shift+O: enable or disable the whole function
     Ctrl+Shift+P: User manual and current state
     z: 1 star
-    a: duplicate (left MouseClick, left, on the duplicated picture by yourself)
+    a: duplicate (left click on the duplicated picture by yourself)
     x: 2 star (not very good)
     s: 2 star (ordinary and bad location)
     c: 3 star (overall not very good and not very bad)
