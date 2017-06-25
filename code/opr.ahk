@@ -613,6 +613,7 @@ findMarkPosition(imagefile, ByRef MarkW, ByRef MarkH){
 
     if X is not integer
     {
+        MsgBox %X%, %Y%, %W%, %H%
         MsgBox, 0, Warning,  Cannot find the "%imagefile%" in current window.
         return
     }
