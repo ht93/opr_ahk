@@ -377,7 +377,7 @@ oprSubmit(){
 getLocation(ByRef OutputVarX, ByRef OutputVarY){
     IfNotExist, save.bmp
         MsgBox Error: Your file either doesn't exist or isn't in this location.
-    ImageSearch, OutputVarX, OutputVarY, 640, 360, 690, 640, save.bmp
+    ImageSearch, OutputVarX, OutputVarY, 640, 360, 690, 640, *150 save.bmp
     OutputVarX := OutputVarX + 15
     OutputVarY := OutputVarY + 10
 }
@@ -385,7 +385,7 @@ getLocation(ByRef OutputVarX, ByRef OutputVarY){
 getDuplicateLocation(ByRef OutputVarX, ByRef OutputVarY){
     IfNotExist, dup.png
         MsgBox Error: Your file either doesn't exist or isn't in this location.
-    ImageSearch, OutputVarX, OutputVarY, 970, 500, 1575, 900, dup.png
+    ImageSearch, OutputVarX, OutputVarY, 970, 500, 1575, 900, *150 dup.png
     OutputVarX := OutputVarX + 15
     OutputVarY := OutputVarY + 10
 }
