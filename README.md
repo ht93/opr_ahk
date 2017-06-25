@@ -3,7 +3,7 @@
 ### Pre request
 1. Please copy `opr.exe`, `dup.png` and `save.bmp` to same directory and open `opr.exe`.
 2. This code is fit to **Chrome** with **1920x1080** screen resolution. Please adjust to it to fit your own setup.
-3. Please ensure the the windows scale and layout is 100% in display setting.
+3. Please ensure the Windows `scale and layout` is `100%` in display setting.
 
 ### Control
 - `Ctrl+Shift+o`: enable or disable the whole function
