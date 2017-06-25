@@ -1,6 +1,6 @@
 flagOPR := 0
 
-^+o::flagOPR := !flagOPR
+^+o::setup()
 
 ^+p::MsgBox, 0, info,   
 ( LTrim
@@ -10,7 +10,7 @@ flagOPR := 0
     Ctrl+Shift+O: enable or disable the whole function
     Ctrl+Shift+P: User manual and current state
     z: 1 star
-    a: duplicate (left click on the duplicated picture by yourself)
+    a: duplicate (left MouseClick, left, on the duplicated picture by yourself)
     x: 2 star (not very good)
     s: 2 star (ordinary and bad location)
     c: 3 star (overall not very good and not very bad)
@@ -50,8 +50,20 @@ Space::oprSubmit()
 
 esc::exitapp
 
+setup(){
+    global flagOPR, offsetLR, offsetUD
+    if flagOPR{
+        flagOPR := 0
+        Return
+    } else {
+        InputBox, offsetLR, Left & Right offset, Please enter Left or Right offset (Left negative Right positive Like -50 or 100),,,,,,,,0
+        InputBox, offsetUD, UP & Down offset, Please enter UP or Down offset (UP negative Down positive Like -50 or 100),,,,,,,,0
+        flagOPR := 1
+    }
+}
+
 opr1star(){
-    global flagOPR
+    global flagOPR, offsetLR, offsetUD
     if !flagOPR {
         MsgBox, 0, Warning,  OPR AHK function is not enabled yet.
         return
@@ -62,17 +74,17 @@ opr1star(){
         MsgBox, 0, Warning,  Cannot find the star.
         return
     }
-    Click 505, %starY%
-    Random, timeWait, 500, 550
+    MouseClick, left, offsetLR + 505, starY + offsetUD
+    Random, timeWait, 800, 850
     Sleep, %timeWait%
-    Click 1010, 290
-    Random, timeWait, 500, 550
+    MouseClick, left, 1010, 290
+    Random, timeWait, 800, 850
     Sleep, %timeWait%
-    Click 1010, 290
+    MouseClick, left, 1010, 290
 }
 
 oprDuplicate(){
-    global flagOPR
+    global flagOPR, offsetLR, offsetUD
     if !flagOPR {
         MsgBox, 0, Warning,  OPR AHK function is not enabled yet.
         return
@@ -83,17 +95,17 @@ oprDuplicate(){
         MsgBox, 0, Warning,  Cannot find the "Mark as Duplicate".
         return
     }
-    Click %starX%, %starY%
-    Random, timeWait, 500, 550
+    MouseClick, left, starX, starY
+    Random, timeWait, 800, 850
     Sleep, %timeWait%
-    Click 1010, 290
-    Random, timeWait, 500, 550
+    MouseClick, left, 1010, 290
+    Random, timeWait, 800, 850
     Sleep, %timeWait%
-    Click 1010, 290
+    MouseClick, left, 1010, 290
 }
 
 opr2star_1(){
-    global flagOPR
+    global flagOPR, offsetLR, offsetUD
     if !flagOPR {
         MsgBox, 0, Warning,  OPR AHK function is not enabled yet.
         return
@@ -104,26 +116,26 @@ opr2star_1(){
         MsgBox, 0, Warning,  Cannot find the star.
         return
     }
-    Click 545, %starY%
+    MouseClick, left, 545 + offsetLR, starY + offsetUD
     Random, timeWait, 100, 150
     Sleep, %timeWait%
-    Click 1365, 170
+    MouseClick, left, 1365 + offsetLR, 170 + offsetUD
     Random, timeWait, 100, 150
     Sleep, %timeWait%
-    Click 1325, 220
+    MouseClick, left, 1325 + offsetLR, 220 + offsetUD
     Random, timeWait, 100, 150
     Sleep, %timeWait%
-    Click 1325, 280
+    MouseClick, left, 1325 + offsetLR, 280 + offsetUD
     Random, timeWait, 1000, 1200
     Sleep, %timeWait%
-    Click 680, 670
+    MouseClick, left, 680 + offsetLR, 670 + offsetUD
     Random, timeWait, 100, 150
     Sleep, %timeWait%
-    Click 720, 755
+    MouseClick, left, 720 + offsetLR, 755 + offsetUD
 }
 
 opr2star_2(){
-    global flagOPR
+    global flagOPR, offsetLR, offsetUD
     if !flagOPR {
         MsgBox, 0, Warning,  OPR AHK function is not enabled yet.
         return
@@ -134,26 +146,26 @@ opr2star_2(){
         MsgBox, 0, Warning,  Cannot find the star.
         return
     }
-    Click 545, %starY%
+    MouseClick, left, 545 + offsetLR, starY + offsetUD
     Random, timeWait, 100, 150
     Sleep, %timeWait%
-    Click 1405, 170
+    MouseClick, left, 1405 + offsetLR, 170 + offsetUD
     Random, timeWait, 100, 150
     Sleep, %timeWait%
-    Click 1365, 220
+    MouseClick, left, 1365 + offsetLR, 220 + offsetUD
     Random, timeWait, 100, 150
     Sleep, %timeWait%
-    Click 1365, 280
+    MouseClick, left, 1365 + offsetLR, 280 + offsetUD
     Random, timeWait, 1000, 1200
     Sleep, %timeWait%
-    Click 600, 670
+    MouseClick, left, 600 + offsetLR, 670 + offsetUD
     Random, timeWait, 100, 150
     Sleep, %timeWait%
-    Click 680, 755
+    MouseClick, left, 680 + offsetLR, 755 + offsetUD
 }
 
 opr3star_1(){
-    global flagOPR
+    global flagOPR, offsetLR, offsetUD
     if !flagOPR {
         MsgBox, 0, Warning,  OPR AHK function is not enabled yet.
         return
@@ -164,26 +176,26 @@ opr3star_1(){
         MsgBox, 0, Warning,  Cannot find the star.
         return
     }
-    Click 585, %starY%
+    MouseClick, left, 585 + offsetLR, starY + offsetUD
     Random, timeWait, 100, 150
     Sleep, %timeWait%
-    Click 1405, 170
+    MouseClick, left, 1405 + offsetLR, 170 + offsetUD
     Random, timeWait, 100, 150
     Sleep, %timeWait%
-    Click 1365, 220
+    MouseClick, left, 1365 + offsetLR, 220 + offsetUD
     Random, timeWait, 100, 150
     Sleep, %timeWait%
-    Click 1365, 280
+    MouseClick, left, 1365 + offsetLR, 280 + offsetUD
     Random, timeWait, 1000, 1200
     Sleep, %timeWait%
-    Click 680, 670
+    MouseClick, left, 680 + offsetLR, 670 + offsetUD
     Random, timeWait, 100, 150
     Sleep, %timeWait%
-    Click 720, 755
+    MouseClick, left, 720 + offsetLR, 755 + offsetUD
 }
 
 opr3star_2(){
-    global flagOPR
+    global flagOPR, offsetLR, offsetUD
     if !flagOPR {
         MsgBox, 0, Warning,  OPR AHK function is not enabled yet.
         return
@@ -194,26 +206,26 @@ opr3star_2(){
         MsgBox, 0, Warning,  Cannot find the star.
         return
     }
-    Click 585, %starY%
+    MouseClick, left, 585 + offsetLR, starY + offsetUD
     Random, timeWait, 100, 150
     Sleep, %timeWait%
-    Click 1445, 170
+    MouseClick, left, 1445 + offsetLR, 170 + offsetUD
     Random, timeWait, 100, 150
     Sleep, %timeWait%
-    Click 1405, 220
+    MouseClick, left, 1405 + offsetLR, 220 + offsetUD
     Random, timeWait, 100, 150
     Sleep, %timeWait%
-    Click 1445, 280
+    MouseClick, left, 1445 + offsetLR, 280 + offsetUD
     Random, timeWait, 1000, 1200
     Sleep, %timeWait%
-    Click 640, 670
+    MouseClick, left, 640 + offsetLR, 670 + offsetUD
     Random, timeWait, 100, 150
     Sleep, %timeWait%
-    Click 720, 755
+    MouseClick, left, 720 + offsetLR, 755 + offsetUD
 }
 
 opr4star_1(){
-    global flagOPR
+    global flagOPR, offsetLR, offsetUD
     if !flagOPR {
         MsgBox, 0, Warning,  OPR AHK function is not enabled yet.
         return
@@ -224,26 +236,26 @@ opr4star_1(){
         MsgBox, 0, Warning,  Cannot find the star.
         return
     }
-    Click 625, %starY%
+    MouseClick, left, 625 + offsetLR, starY + offsetUD
     Random, timeWait, 100, 150
     Sleep, %timeWait%
-    Click 1445, 170
+    MouseClick, left, 1445 + offsetLR, 170 + offsetUD
     Random, timeWait, 100, 150
     Sleep, %timeWait%
-    Click 1405, 220
+    MouseClick, left, 1405 + offsetLR, 220 + offsetUD
     Random, timeWait, 100, 150
     Sleep, %timeWait%
-    Click 1405, 280
+    MouseClick, left, 1405 + offsetLR, 280 + offsetUD
     Random, timeWait, 1000, 1200
     Sleep, %timeWait%
-    Click 720, 670
+    MouseClick, left, 720 + offsetLR, 670 + offsetUD
     Random, timeWait, 100, 150
     Sleep, %timeWait%
-    Click 760, 755
+    MouseClick, left, 760 + offsetLR, 755 + offsetUD
 }
 
 opr4star_2(){
-    global flagOPR
+    global flagOPR, offsetLR, offsetUD
     if !flagOPR {
         MsgBox, 0, Warning,  OPR AHK function is not enabled yet.
         return
@@ -254,26 +266,26 @@ opr4star_2(){
         MsgBox, 0, Warning,  Cannot find the star.
         return
     }
-    Click 625, %starY%
+    MouseClick, left, 625 + offsetLR, starY + offsetUD
     Random, timeWait, 100, 150
     Sleep, %timeWait%
-    Click 1445, 170
+    MouseClick, left, 1445 + offsetLR, 170 + offsetUD
     Random, timeWait, 100, 150
     Sleep, %timeWait%
-    Click 1405, 220
+    MouseClick, left, 1405 + offsetLR, 220 + offsetUD
     Random, timeWait, 100, 150
     Sleep, %timeWait%
-    Click 1445, 280
+    MouseClick, left, 1445 + offsetLR, 280 + offsetUD
     Random, timeWait, 1000, 1200
     Sleep, %timeWait%
-    Click 680, 670
+    MouseClick, left, 680 + offsetLR, 670 + offsetUD
     Random, timeWait, 100, 150
     Sleep, %timeWait%
-    Click 720, 755
+    MouseClick, left, 720 + offsetLR, 755 + offsetUD
 }
 
 opr5star_1(){
-    global flagOPR
+    global flagOPR, offsetLR, offsetUD
     if !flagOPR {
         MsgBox, 0, Warning,  OPR AHK function is not enabled yet.
         return
@@ -284,26 +296,26 @@ opr5star_1(){
         MsgBox, 0, Warning,  Cannot find the star.
         return
     }
-    Click %starX%, %starY%
+    MouseClick, left, starX + offsetLR, starY + offsetUD
     Random, timeWait, 100, 150
     Sleep, %timeWait%
-    Click 1445, 170
+    MouseClick, left, 1445 + offsetLR, 170 + offsetUD
     Random, timeWait, 100, 150
     Sleep, %timeWait%
-    Click 1405, 220
+    MouseClick, left, 1405 + offsetLR, 220 + offsetUD
     Random, timeWait, 100, 150
     Sleep, %timeWait%
-    Click 1445, 280
+    MouseClick, left, 1445 + offsetLR, 280 + offsetUD
     Random, timeWait, 1000, 1200
     Sleep, %timeWait%
-    Click 720, 670
+    MouseClick, left, 720 + offsetLR, 670 + offsetUD
     Random, timeWait, 100, 150
     Sleep, %timeWait%
-    Click 760, 755
+    MouseClick, left, 760 + offsetLR, 755 + offsetUD
 }
 
 opr5star_2(){
-    global flagOPR
+    global flagOPR, offsetLR, offsetUD
     if !flagOPR {
         MsgBox, 0, Warning,  OPR AHK function is not enabled yet.
         return
@@ -314,26 +326,26 @@ opr5star_2(){
         MsgBox, 0, Warning,  Cannot find the star.
         return
     }
-    Click %starX%, %starY%
+    MouseClick, left, starX + offsetLR, starY + offsetUD
     Random, timeWait, 100, 150
     Sleep, %timeWait%
-    Click 1445, 170
+    MouseClick, left, 1445 + offsetLR, 170 + offsetUD
     Random, timeWait, 100, 150
     Sleep, %timeWait%
-    Click 1445, 220
+    MouseClick, left, 1445 + offsetLR, 220 + offsetUD
     Random, timeWait, 100, 150
     Sleep, %timeWait%
-    Click 1405, 280
+    MouseClick, left, 1405 + offsetLR, 280 + offsetUD
     Random, timeWait, 1000, 1200
     Sleep, %timeWait%
-    Click 720, 670
+    MouseClick, left, 720 + offsetLR, 670 + offsetUD
     Random, timeWait, 100, 150
     Sleep, %timeWait%
-    Click 760, 755
+    MouseClick, left, 760 + offsetLR, 755 + offsetUD
 }
 
 opr5star_3(){
-    global flagOPR
+    global flagOPR, offsetLR, offsetUD
     if !flagOPR {
         MsgBox, 0, Warning,  OPR AHK function is not enabled yet.
         return
@@ -344,40 +356,40 @@ opr5star_3(){
         MsgBox, 0, Warning,  Cannot find the star.
         return
     }
-    Click %starX%, %starY%
+    MouseClick, left, starX + offsetLR, starY + offsetUD
     Random, timeWait, 100, 150
     Sleep, %timeWait%
-    Click 1445, 170
+    MouseClick, left, 1445 + offsetLR, 170 + offsetUD
     Random, timeWait, 100, 150
     Sleep, %timeWait%
-    Click 1445, 220
+    MouseClick, left, 1445 + offsetLR, 220 + offsetUD
     Random, timeWait, 100, 150
     Sleep, %timeWait%
-    Click 1445, 280
+    MouseClick, left, 1445 + offsetLR, 280 + offsetUD
     Random, timeWait, 1000, 1200
     Sleep, %timeWait%
-    Click 760, 670
+    MouseClick, left, 760 + offsetLR, 670 + offsetUD
     Random, timeWait, 100, 150
     Sleep, %timeWait%
-    Click 760, 755
+    MouseClick, left, 760 + offsetLR, 755 + offsetUD
 }
 
 oprSubmit(){
-    global flagOPR
+    global flagOPR, offsetLR, offsetUD
     if !flagOPR {
         MsgBox, 0, Warning,  OPR AHK function is not enabled yet.
         return
     }
-    Click 980, 880
+    MouseClick, left, 980, 880
     Random, timeWait, 1000, 1200
     Sleep, %timeWait%
-    Click 1000, 300
+    MouseClick, left, 1000, 300
 }
 
 getLocation(ByRef OutputVarX, ByRef OutputVarY){
     IfNotExist, save.bmp
         MsgBox Error: Your file either doesn't exist or isn't in this location.
-    ImageSearch, OutputVarX, OutputVarY, 640, 360, 690, 640, *150 save.bmp
+    ImageSearch, OutputVarX, OutputVarY, 640, 260, 690, 640, *100 save.bmp
     OutputVarX := OutputVarX + 15
     OutputVarY := OutputVarY + 10
 }
@@ -385,7 +397,7 @@ getLocation(ByRef OutputVarX, ByRef OutputVarY){
 getDuplicateLocation(ByRef OutputVarX, ByRef OutputVarY){
     IfNotExist, dup.png
         MsgBox Error: Your file either doesn't exist or isn't in this location.
-    ImageSearch, OutputVarX, OutputVarY, 970, 500, 1575, 900, *150 dup.png
+    ImageSearch, OutputVarX, OutputVarY, 970, 500, 1575, 900, *100 dup.png
     OutputVarX := OutputVarX + 15
     OutputVarY := OutputVarY + 10
 }
