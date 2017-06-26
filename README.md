@@ -2,9 +2,9 @@
 
 ### Pre
 1. Please copy `opr.exe`, `windowspy.exe`, `dup.png`, `coor.txt` and `save.bmp` to a new directory and open `opr.exe`.
-2. The `coor.txt` is fit to my setup (**Chrome**\ **1920x1080**\ Windows `scale and layout` with `100%`). Even the same setup does not mean it would work. Please adjust it to fit your own setup by `Ctrl+Shift+o`.
+2. The `coor.txt` is fit to my setup (**Chrome**\\**1920x1080**\\Windows `scale and layout` with `100%`). Even the same setup does not mean it would work. Please adjust it to fit your own setup by `Ctrl+Shift+o`.
 3. To adjust the coordinate, please use the `windowspy.exe` and use the Relative mode for coordinate update. Please make sure that you have selected your web browser.
-4. Once you have your own coordinate `coor.txt` with `Ctrl+Shift+o`, please make a copy of the `coor.txt` (like `coor_backup.txt` in same directory). The program may cause some number during some of my test run. Just copy the backup and rename it back, you will still be good.
+4. Once you have your own coordinate `coor.txt` with `Ctrl+Shift+o`, please make a copy of the it (like `coor_backup.txt` in same directory). The program caused some number missing during some of my test run. In this case, your backup will be useful.
 
 ### Control
 - `Ctrl+Shift+o`: set up the coordinate (automatically update the `coor.txt`), and enable or disable the whole function
