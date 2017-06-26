@@ -51,19 +51,127 @@ Space::oprSubmit()
 esc::exitapp
 
 setup(){
-    global flagOPR, offsetLR, offsetUD
+    global flagOPR
     if flagOPR{
         flagOPR := 0
         Return
     } else {
-        InputBox, offsetLR, Left & Right offset, Please enter Left or Right offset (Left negative Right positive Like -50 or 100),,,,,,,,0
-        InputBox, offsetUD, UP & Down offset, Please enter UP or Down offset (UP negative Down positive Like -50 or 100),,,,,,,,0
+        setupGUI()
         flagOPR := 1
     }
 }
 
+setupGUI(){
+    global starW, starH, distance, submitX, submitY, confirmX, confirmY
+    global mark2X, mark2Y, mark3Y, mark4Y, mark5X, mark5Y, mark6Y
+    global starSearch1X, starSearch1Y, starSearch2X, starSearch2Y
+    global dupSearch1X, dupSearch1Y, dupSearch2X, dupSearch2Y
+
+    Array := Object()
+
+    ; Write to the array:
+    Loop, Read, coor.txt ; This loop retrieves each line from the file, one at a time.
+    {
+        Array.Insert(A_LoopReadLine) ; Append this line to the array.
+    }
+
+    Gui, New
+    Gui, Add, Text,, Star width (all in pixel)
+    Gui, Add, Edit, Number vstarW
+    GuiControl,, starW, % Array[1]
+    Gui, Add, Text,, Star height
+    Gui, Add, Edit, Number vstarH
+    GuiControl,, starH, % Array[2]
+    Gui, Add, Text,, Distance between center of two adjacent star
+    Gui, Add, Edit, Number vdistance
+    GuiControl,, distance, % Array[3]
+    Gui, Add, Text,, X coordinate for center of "Submit" button (all coordinate in Relative mode, "center" is the place to click)
+    Gui, Add, Edit, Number vsubmitX
+    GuiControl,, submitX, % Array[4]
+    Gui, Add, Text,, Y coordinate for center of "Submit" button
+    Gui, Add, Edit, Number vsubmitY
+    GuiControl,, submitY, % Array[5]
+    Gui, Add, Text,, X coordinate for center of "Analyze Next" button (this coordinate also for the "submit" button around same place)
+    Gui, Add, Edit, Number vconfirmX
+    GuiControl,, confirmX, % Array[6]
+    Gui, Add, Text,, Y coordinate for center of "Analyze Next" button (this coordinate also for the "submit" button around same place)
+    Gui, Add, Edit, Number vconfirmY
+    GuiControl,, confirmY, % Array[7]
+    Gui, Add, Text,, X coordinate for center of 5 star of "Is the title accurate?"
+    Gui, Add, Edit, Number vmark2X
+    GuiControl,, mark2X, % Array[8]
+    Gui, Add, Text,, Y coordinate for center of 5 star of "Is the title accurate?"
+    Gui, Add, Edit, Number vmark2Y
+    GuiControl,, mark2Y, % Array[9]
+    Gui, Add, Text,, Y coordinate for center of 5 star of "Is it historically or culturally significant?"
+    Gui, Add, Edit, Number vmark3Y
+    GuiControl,, mark3Y, % Array[10]
+    Gui, Add, Text,, Y coordinate for center of 5 star of "Is it visually unique?"
+    Gui, Add, Edit, Number vmark4Y
+    GuiControl,, mark4Y, % Array[11]
+    Gui, Add, Text,, X coordinate for center of 5 star of "Is the location accurate?"
+    Gui, Add, Edit, Number vmark5X
+    GuiControl,, mark5X, % Array[12]
+    Gui, Add, Text,, Y coordinate for center of 5 star of "Is the location accurate?"
+    Gui, Add, Edit, Number vmark5Y
+    GuiControl,, mark5Y, % Array[13]
+    Gui, Add, Text,, Y coordinate for center of 5 star of "Can it be safely accessed?"
+    Gui, Add, Edit, Number vmark6Y
+    GuiControl,, mark6Y, % Array[14]
+    Gui, Add, Button, Default gNext, Next
+    Gui, Show
+
+    Gui, 2: New
+    Gui, 2: Add, Text,, X coordinate for upper left point for searching "Should this be a portal?" 5 star
+    Gui, 2: Add, Edit, Number vstarSearch1X
+    GuiControl,, starSearch1X, % Array[15]
+    Gui, 2: Add, Text,, Y coordinate for upper left point for searching "Should this be a portal?" 5 star
+    Gui, 2: Add, Edit, Number vstarSearch1Y
+    GuiControl,, starSearch1Y, % Array[16]
+    Gui, 2: Add, Text,, X coordinate for lower right point for searching "Should this be a portal?" 5 star
+    Gui, 2: Add, Edit, Number vstarSearch2X
+    GuiControl,, starSearch2X, % Array[17]
+    Gui, 2: Add, Text,, Y coordinate for lower right point for searching "Should this be a portal?" 5 star
+    Gui, 2: Add, Edit, Number vstarSearch2Y
+    GuiControl,, starSearch2Y, % Array[18]
+    Gui, 2: Add, Text,, X coordinate for upper left point for searching "Mark as duplicate."
+    Gui, 2: Add, Edit, Number vdupSearch1X
+    GuiControl,, dupSearch1X, % Array[19]
+    Gui, 2: Add, Text,, Y coordinate for upper left point for searching "Mark as duplicate."
+    Gui, 2: Add, Edit, Number vdupSearch1Y
+    GuiControl,, dupSearch1Y, % Array[20]
+    Gui, 2: Add, Text,, X coordinate for lower right point for searching "Mark as duplicate."
+    Gui, 2: Add, Edit, Number vdupSearch2X
+    GuiControl,, dupSearch2X, % Array[21]
+    Gui, 2: Add, Text,, Y coordinate for lower right point for searching "Mark as duplicate."
+    Gui, 2: Add, Edit, Number vdupSearch2Y
+    GuiControl,, dupSearch2Y, % Array[22]
+    Gui, 2: Add, Button, Default gDone, Done
+    
+    return
+
+    Next:
+    Gui, Submit
+    Gui, Destroy
+    Gui, 2: Show
+    return    
+    
+    Done:
+    Gui, 2: Submit
+    Gui, 2: Destroy
+    FileDelete, coor.txt
+    Array := [starW, starH, distance, submitX, submitY, confirmX, confirmY, mark2X, mark2Y, mark3Y, mark4Y, mark5X, mark5Y, mark6Y, starSearch1X, starSearch1Y, starSearch2X, starSearch2Y, dupSearch1X, dupSearch1Y, dupSearch2X, dupSearch2Y]
+    Sleep, 1000
+    for index, element in Array ; Recommended approach in most cases.
+    {
+        FileAppend, %element%`n, coor.txt
+    }
+    return
+}
+
 opr1star(){
-    global flagOPR, offsetLR, offsetUD
+    global flagOPR
+    global distance, confirmX, confirmY
     if !flagOPR {
         MsgBox, 0, Warning,  OPR AHK function is not enabled yet.
         return
@@ -74,17 +182,18 @@ opr1star(){
         MsgBox, 0, Warning,  Cannot find the star.
         return
     }
-    MouseClick, left, offsetLR + 505, starY + offsetUD
+    MouseClick, left, % starX - distance * 4, starY
     Random, timeWait, 800, 850
     Sleep, %timeWait%
-    MouseClick, left, 1010, 290
+    MouseClick, left, confirmX, confirmY
     Random, timeWait, 800, 850
     Sleep, %timeWait%
-    MouseClick, left, 1010, 290
+    MouseClick, left, confirmX, confirmY
 }
 
 oprDuplicate(){
-    global flagOPR, offsetLR, offsetUD
+    global flagOPR
+    global confirmX, confirmY
     if !flagOPR {
         MsgBox, 0, Warning,  OPR AHK function is not enabled yet.
         return
@@ -98,14 +207,15 @@ oprDuplicate(){
     MouseClick, left, starX, starY
     Random, timeWait, 800, 850
     Sleep, %timeWait%
-    MouseClick, left, 1010, 290
+    MouseClick, left, confirmX, confirmY
     Random, timeWait, 800, 850
     Sleep, %timeWait%
-    MouseClick, left, 1010, 290
+    MouseClick, left, confirmX, confirmY
 }
 
 opr2star_1(){
-    global flagOPR, offsetLR, offsetUD
+    global flagOPR
+    global mark2X, mark2Y, mark3Y, mark4Y, mark5X, mark5Y, mark6Y, distance
     if !flagOPR {
         MsgBox, 0, Warning,  OPR AHK function is not enabled yet.
         return
@@ -116,26 +226,27 @@ opr2star_1(){
         MsgBox, 0, Warning,  Cannot find the star.
         return
     }
-    MouseClick, left, 545 + offsetLR, starY + offsetUD
+    MouseClick, left, % starX - distance * 3, starY
     Random, timeWait, 100, 150
     Sleep, %timeWait%
-    MouseClick, left, 1365 + offsetLR, 170 + offsetUD
+    MouseClick, left, % mark2X - distance * 2, mark2Y
     Random, timeWait, 100, 150
     Sleep, %timeWait%
-    MouseClick, left, 1325 + offsetLR, 220 + offsetUD
+    MouseClick, left, % mark2X - distance * 3, mark3Y
     Random, timeWait, 100, 150
     Sleep, %timeWait%
-    MouseClick, left, 1325 + offsetLR, 280 + offsetUD
+    MouseClick, left, % mark2X - distance * 3, mark4Y
     Random, timeWait, 1000, 1200
     Sleep, %timeWait%
-    MouseClick, left, 680 + offsetLR, 670 + offsetUD
+    MouseClick, left, % mark5X - distance * 2, mark5Y
     Random, timeWait, 100, 150
     Sleep, %timeWait%
-    MouseClick, left, 720 + offsetLR, 755 + offsetUD
+    MouseClick, left, % mark5X - distance * 1, mark6Y
 }
 
 opr2star_2(){
-    global flagOPR, offsetLR, offsetUD
+    global flagOPR
+    global mark2X, mark2Y, mark3Y, mark4Y, mark5X, mark5Y, mark6Y, distance
     if !flagOPR {
         MsgBox, 0, Warning,  OPR AHK function is not enabled yet.
         return
@@ -146,26 +257,27 @@ opr2star_2(){
         MsgBox, 0, Warning,  Cannot find the star.
         return
     }
-    MouseClick, left, 545 + offsetLR, starY + offsetUD
+    MouseClick, left, % starX - distance * 3, starY
     Random, timeWait, 100, 150
     Sleep, %timeWait%
-    MouseClick, left, 1405 + offsetLR, 170 + offsetUD
+    MouseClick, left, % mark2X - distance * 1, mark2Y
     Random, timeWait, 100, 150
     Sleep, %timeWait%
-    MouseClick, left, 1365 + offsetLR, 220 + offsetUD
+    MouseClick, left, % mark2X - distance * 2, mark3Y
     Random, timeWait, 100, 150
     Sleep, %timeWait%
-    MouseClick, left, 1365 + offsetLR, 280 + offsetUD
+    MouseClick, left, % mark2X - distance * 2, mark4Y
     Random, timeWait, 1000, 1200
     Sleep, %timeWait%
-    MouseClick, left, 600 + offsetLR, 670 + offsetUD
+    MouseClick, left, % mark5X - distance * 4, mark5Y
     Random, timeWait, 100, 150
     Sleep, %timeWait%
-    MouseClick, left, 680 + offsetLR, 755 + offsetUD
+    MouseClick, left, % mark5X - distance * 2, mark6Y
 }
 
 opr3star_1(){
-    global flagOPR, offsetLR, offsetUD
+    global flagOPR
+    global mark2X, mark2Y, mark3Y, mark4Y, mark5X, mark5Y, mark6Y, distance
     if !flagOPR {
         MsgBox, 0, Warning,  OPR AHK function is not enabled yet.
         return
@@ -176,26 +288,27 @@ opr3star_1(){
         MsgBox, 0, Warning,  Cannot find the star.
         return
     }
-    MouseClick, left, 585 + offsetLR, starY + offsetUD
+    MouseClick, left, % starX - distance * 2, starY
     Random, timeWait, 100, 150
     Sleep, %timeWait%
-    MouseClick, left, 1405 + offsetLR, 170 + offsetUD
+    MouseClick, left, % mark2X - distance * 1, mark2Y
     Random, timeWait, 100, 150
     Sleep, %timeWait%
-    MouseClick, left, 1365 + offsetLR, 220 + offsetUD
+    MouseClick, left, % mark2X - distance * 2, mark3Y
     Random, timeWait, 100, 150
     Sleep, %timeWait%
-    MouseClick, left, 1365 + offsetLR, 280 + offsetUD
+    MouseClick, left, % mark2X - distance * 2, mark4Y
     Random, timeWait, 1000, 1200
     Sleep, %timeWait%
-    MouseClick, left, 680 + offsetLR, 670 + offsetUD
+    MouseClick, left, % mark5X - distance * 2, mark5Y
     Random, timeWait, 100, 150
     Sleep, %timeWait%
-    MouseClick, left, 720 + offsetLR, 755 + offsetUD
+    MouseClick, left, % mark5X - distance * 1, mark6Y
 }
 
 opr3star_2(){
-    global flagOPR, offsetLR, offsetUD
+    global flagOPR
+    global mark2X, mark2Y, mark3Y, mark4Y, mark5X, mark5Y, mark6Y, distance
     if !flagOPR {
         MsgBox, 0, Warning,  OPR AHK function is not enabled yet.
         return
@@ -206,26 +319,27 @@ opr3star_2(){
         MsgBox, 0, Warning,  Cannot find the star.
         return
     }
-    MouseClick, left, 585 + offsetLR, starY + offsetUD
+    MouseClick, left, % starX - distance * 2, starY
     Random, timeWait, 100, 150
     Sleep, %timeWait%
-    MouseClick, left, 1445 + offsetLR, 170 + offsetUD
+    MouseClick, left, mark2X, mark2Y
     Random, timeWait, 100, 150
     Sleep, %timeWait%
-    MouseClick, left, 1405 + offsetLR, 220 + offsetUD
+    MouseClick, left, % mark2X - distance * 1, mark3Y
     Random, timeWait, 100, 150
     Sleep, %timeWait%
-    MouseClick, left, 1445 + offsetLR, 280 + offsetUD
+    MouseClick, left, mark2X, mark4Y
     Random, timeWait, 1000, 1200
     Sleep, %timeWait%
-    MouseClick, left, 640 + offsetLR, 670 + offsetUD
+    MouseClick, left, % mark5X - distance * 3, mark5Y
     Random, timeWait, 100, 150
     Sleep, %timeWait%
-    MouseClick, left, 720 + offsetLR, 755 + offsetUD
+    MouseClick, left, % mark5X - distance * 1, mark6Y
 }
 
 opr4star_1(){
-    global flagOPR, offsetLR, offsetUD
+    global flagOPR
+    global mark2X, mark2Y, mark3Y, mark4Y, mark5X, mark5Y, mark6Y, distance
     if !flagOPR {
         MsgBox, 0, Warning,  OPR AHK function is not enabled yet.
         return
@@ -236,26 +350,27 @@ opr4star_1(){
         MsgBox, 0, Warning,  Cannot find the star.
         return
     }
-    MouseClick, left, 625 + offsetLR, starY + offsetUD
+    MouseClick, left, % starX - distance * 1, starY
     Random, timeWait, 100, 150
     Sleep, %timeWait%
-    MouseClick, left, 1445 + offsetLR, 170 + offsetUD
+    MouseClick, left, mark2X, mark2Y
     Random, timeWait, 100, 150
     Sleep, %timeWait%
-    MouseClick, left, 1405 + offsetLR, 220 + offsetUD
+    MouseClick, left, % mark2X - distance * 1, mark3Y
     Random, timeWait, 100, 150
     Sleep, %timeWait%
-    MouseClick, left, 1405 + offsetLR, 280 + offsetUD
+    MouseClick, left, % mark2X - distance * 1, mark4Y
     Random, timeWait, 1000, 1200
     Sleep, %timeWait%
-    MouseClick, left, 720 + offsetLR, 670 + offsetUD
+    MouseClick, left, % mark5X - distance * 1, mark5Y
     Random, timeWait, 100, 150
     Sleep, %timeWait%
-    MouseClick, left, 760 + offsetLR, 755 + offsetUD
+    MouseClick, left, mark5X, mark6Y
 }
 
 opr4star_2(){
-    global flagOPR, offsetLR, offsetUD
+    global flagOPR
+    global mark2X, mark2Y, mark3Y, mark4Y, mark5X, mark5Y, mark6Y, distance
     if !flagOPR {
         MsgBox, 0, Warning,  OPR AHK function is not enabled yet.
         return
@@ -266,26 +381,27 @@ opr4star_2(){
         MsgBox, 0, Warning,  Cannot find the star.
         return
     }
-    MouseClick, left, 625 + offsetLR, starY + offsetUD
+    MouseClick, left, % starX - distance * 1, starY
     Random, timeWait, 100, 150
     Sleep, %timeWait%
-    MouseClick, left, 1445 + offsetLR, 170 + offsetUD
+    MouseClick, left, mark2X, mark2Y
     Random, timeWait, 100, 150
     Sleep, %timeWait%
-    MouseClick, left, 1405 + offsetLR, 220 + offsetUD
+    MouseClick, left, % mark2X - distance * 1, mark3Y
     Random, timeWait, 100, 150
     Sleep, %timeWait%
-    MouseClick, left, 1445 + offsetLR, 280 + offsetUD
+    MouseClick, left, mark2X, mark4Y
     Random, timeWait, 1000, 1200
     Sleep, %timeWait%
-    MouseClick, left, 680 + offsetLR, 670 + offsetUD
+    MouseClick, left, % mark5X - distance * 2, mark5Y
     Random, timeWait, 100, 150
     Sleep, %timeWait%
-    MouseClick, left, 720 + offsetLR, 755 + offsetUD
+    MouseClick, left, % mark5X - distance * 1, mark6Y
 }
 
 opr5star_1(){
-    global flagOPR, offsetLR, offsetUD
+    global flagOPR
+    global mark2X, mark2Y, mark3Y, mark4Y, mark5X, mark5Y, mark6Y, distance
     if !flagOPR {
         MsgBox, 0, Warning,  OPR AHK function is not enabled yet.
         return
@@ -296,26 +412,27 @@ opr5star_1(){
         MsgBox, 0, Warning,  Cannot find the star.
         return
     }
-    MouseClick, left, starX + offsetLR, starY + offsetUD
+    MouseClick, left, starX, starY
     Random, timeWait, 100, 150
     Sleep, %timeWait%
-    MouseClick, left, 1445 + offsetLR, 170 + offsetUD
+    MouseClick, left, mark2X, mark2Y
     Random, timeWait, 100, 150
     Sleep, %timeWait%
-    MouseClick, left, 1405 + offsetLR, 220 + offsetUD
+    MouseClick, left, % mark2X - distance * 1, mark3Y
     Random, timeWait, 100, 150
     Sleep, %timeWait%
-    MouseClick, left, 1445 + offsetLR, 280 + offsetUD
+    MouseClick, left, mark2X, mark4Y
     Random, timeWait, 1000, 1200
     Sleep, %timeWait%
-    MouseClick, left, 720 + offsetLR, 670 + offsetUD
+    MouseClick, left, % mark5X - distance * 1, mark5Y
     Random, timeWait, 100, 150
     Sleep, %timeWait%
-    MouseClick, left, 760 + offsetLR, 755 + offsetUD
+    MouseClick, left, mark5X, mark6Y
 }
 
 opr5star_2(){
-    global flagOPR, offsetLR, offsetUD
+    global flagOPR
+    global mark2X, mark2Y, mark3Y, mark4Y, mark5X, mark5Y, mark6Y, distance
     if !flagOPR {
         MsgBox, 0, Warning,  OPR AHK function is not enabled yet.
         return
@@ -326,26 +443,27 @@ opr5star_2(){
         MsgBox, 0, Warning,  Cannot find the star.
         return
     }
-    MouseClick, left, starX + offsetLR, starY + offsetUD
+    MouseClick, left, starX, starY
     Random, timeWait, 100, 150
     Sleep, %timeWait%
-    MouseClick, left, 1445 + offsetLR, 170 + offsetUD
+    MouseClick, left, mark2X, mark2Y
     Random, timeWait, 100, 150
     Sleep, %timeWait%
-    MouseClick, left, 1445 + offsetLR, 220 + offsetUD
+    MouseClick, left, mark2X, mark3Y
     Random, timeWait, 100, 150
     Sleep, %timeWait%
-    MouseClick, left, 1405 + offsetLR, 280 + offsetUD
+    MouseClick, left, % mark2X - distance * 1, mark4Y
     Random, timeWait, 1000, 1200
     Sleep, %timeWait%
-    MouseClick, left, 720 + offsetLR, 670 + offsetUD
+    MouseClick, left, % mark5X - distance * 1, mark5Y
     Random, timeWait, 100, 150
     Sleep, %timeWait%
-    MouseClick, left, 760 + offsetLR, 755 + offsetUD
+    MouseClick, left, mark5X, mark6Y
 }
 
 opr5star_3(){
-    global flagOPR, offsetLR, offsetUD
+    global flagOPR
+    global mark2X, mark2Y, mark3Y, mark4Y, mark5X, mark5Y, mark6Y, distance
     if !flagOPR {
         MsgBox, 0, Warning,  OPR AHK function is not enabled yet.
         return
@@ -356,48 +474,52 @@ opr5star_3(){
         MsgBox, 0, Warning,  Cannot find the star.
         return
     }
-    MouseClick, left, starX + offsetLR, starY + offsetUD
+    MouseClick, left, starX, starY
     Random, timeWait, 100, 150
     Sleep, %timeWait%
-    MouseClick, left, 1445 + offsetLR, 170 + offsetUD
+    MouseClick, left, mark2X, mark2Y
     Random, timeWait, 100, 150
     Sleep, %timeWait%
-    MouseClick, left, 1445 + offsetLR, 220 + offsetUD
+    MouseClick, left, mark2X, mark3Y
     Random, timeWait, 100, 150
     Sleep, %timeWait%
-    MouseClick, left, 1445 + offsetLR, 280 + offsetUD
+    MouseClick, left, mark2X, mark4Y
     Random, timeWait, 1000, 1200
     Sleep, %timeWait%
-    MouseClick, left, 760 + offsetLR, 670 + offsetUD
+    MouseClick, left, mark5X, mark5Y
     Random, timeWait, 100, 150
     Sleep, %timeWait%
-    MouseClick, left, 760 + offsetLR, 755 + offsetUD
+    MouseClick, left, mark5X, mark6Y
 }
 
 oprSubmit(){
-    global flagOPR, offsetLR, offsetUD
+    global submitX, submitY, confirmX, confirmY
+    global flagOPR
     if !flagOPR {
         MsgBox, 0, Warning,  OPR AHK function is not enabled yet.
         return
     }
-    MouseClick, left, 980, 880
+    MouseClick, left, submitX, submitY
     Random, timeWait, 1000, 1200
     Sleep, %timeWait%
-    MouseClick, left, 1000, 300
+    MouseClick, left, confirmX, confirmY
 }
 
 getLocation(ByRef OutputVarX, ByRef OutputVarY){
+    global starSearch1X, starSearch1Y, starSearch2X, starSearch2Y
+    global starW, starH
     IfNotExist, save.bmp
         MsgBox Error: Your file either doesn't exist or isn't in this location.
-    ImageSearch, OutputVarX, OutputVarY, 640, 260, 690, 640, *100 save.bmp
-    OutputVarX := OutputVarX + 15
-    OutputVarY := OutputVarY + 10
+    ImageSearch, OutputVarX, OutputVarY, starSearch1X, starSearch1Y, starSearch2X, starSearch2Y, *100 save.bmp
+    OutputVarX := Floor(OutputVarX + starW / 2)
+    OutputVarY := Floor(OutputVarY + starH / 2)
 }
 
 getDuplicateLocation(ByRef OutputVarX, ByRef OutputVarY){
+    global dupSearch1X, dupSearch1Y, dupSearch2X, dupSearch2Y
     IfNotExist, dup.png
         MsgBox Error: Your file either doesn't exist or isn't in this location.
-    ImageSearch, OutputVarX, OutputVarY, 970, 500, 1575, 900, *100 dup.png
+    ImageSearch, OutputVarX, OutputVarY, dupSearch1X, dupSearch1Y, dupSearch2X, dupSearch2Y, *100 dup.png
     OutputVarX := OutputVarX + 15
     OutputVarY := OutputVarY + 10
 }

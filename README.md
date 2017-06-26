@@ -1,12 +1,13 @@
 # User Manual
 
-### Pre request
-1. Please copy `opr.exe`, `dup.png` and `save.bmp` to same directory and open `opr.exe`.
-2. This code is fit to **Chrome** with **1920x1080** screen resolution. Please adjust to it to fit your own setup.
-3. Please ensure the Windows `scale and layout` is `100%` in display setting.
+### Pre
+1. Please copy `opr.exe`, `windowspy.exe`, `dup.png`, `coor.txt` and `save.bmp` to a new directory and open `opr.exe`.
+2. The `coor.txt` is fit to my setup (**Chrome**\ **1920x1080**\ Windows `scale and layout` with `100%`). Even the same setup does not mean it would work. Please adjust it to fit your own setup by `Ctrl+Shift+o`.
+3. To adjust the coordinate, please use the `windowspy.exe` and use the Relative mode for coordinate update. Please make sure that you have selected your web browser.
+4. Once you have your own coordinate `coor.txt` with `Ctrl+Shift+o`, please make a copy of the `coor.txt` (like `coor_backup.txt` in same directory). The program may cause some number during some of my test run. Just copy the backup and rename it back, you will still be good.
 
 ### Control
-- `Ctrl+Shift+o`: enable or disable the whole function
+- `Ctrl+Shift+o`: set up the coordinate (automatically update the `coor.txt`), and enable or disable the whole function
 - `Ctrl+Shift+p`: User manual and current state
 - `z`: 1 star
 - `a`: duplicate (left click on the duplicated picture by yourself)
