@@ -91,10 +91,10 @@ setupGUI(){
     Gui, Add, Text,, Y coordinate for center of "Submit" button
     Gui, Add, Edit, Number vsubmitY
     GuiControl,, submitY, % Array[5]
-    Gui, Add, Text,, X coordinate for center of "Analyze Next" button (this coordinate also for the "submit" button around same place)
+    Gui, Add, Text,, X coordinate for center of "Analyze Next" button (also for "submit" button around the same place)
     Gui, Add, Edit, Number vconfirmX
     GuiControl,, confirmX, % Array[6]
-    Gui, Add, Text,, Y coordinate for center of "Analyze Next" button (this coordinate also for the "submit" button around same place)
+    Gui, Add, Text,, Y coordinate for center of "Analyze Next" button (also for "submit" button around the same place)
     Gui, Add, Edit, Number vconfirmY
     GuiControl,, confirmY, % Array[7]
     Gui, Add, Text,, X coordinate for center of 5 star of "Is the title accurate?"

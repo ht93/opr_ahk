@@ -22,3 +22,28 @@
 - `t`: 5 star (perfect with visual 5* culture 5* position 5*)
 - `Space`: submit
 - `esc`: stop the script
+
+### Setting (based on my setup)
+All in pixel, all coordinate in Relative mode, "center" is the place to click
+- `30`: Star width
+- `26`: Star height
+- `40`: Distance between center of two adjacent star
+- `980`: X coordinate for center of "Submit" button
+- `880`: Y coordinate for center of "Submit" button
+- `1000`: X coordinate for center of "Analyze Next" button (also for "submit" button around the same place)
+- `300`: Y coordinate for center of "Analyze Next" button (also for "submit" button around the same place)
+- `1445`: X coordinate for center of 5 star of "Is the title accurate?"
+- `170`: Y coordinate for center of 5 star of "Is the title accurate?"
+- `220`: Y coordinate for center of 5 star of "Is it historically or culturally significant?"
+- `280`: Y coordinate for center of 5 star of "Is it visually unique?"
+- `760`: X coordinate for center of 5 star of "Is the location accurate?"
+- `670`: Y coordinate for center of 5 star of "Is the location accurate?"
+- `755`: Y coordinate for center of 5 star of "Can it be safely accessed?"
+- `640`: X coordinate for upper left point for searching "Should this be a portal?" 5 star
+- `260`: Y coordinate for upper left point for searching "Should this be a portal?" 5 star
+- `690`: X coordinate for lower right point for searching "Should this be a portal?" 5 star
+- `640`: Y coordinate for lower right point for searching "Should this be a portal?" 5 star
+- `970`: X coordinate for upper left point for searching "Mark as duplicate."
+- `500`: Y coordinate for upper left point for searching "Mark as duplicate."
+- `1575`: X coordinate for lower right point for searching "Mark as duplicate."
+- `900`: Y coordinate for lower right point for searching "Mark as duplicate."
