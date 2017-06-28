@@ -4,7 +4,7 @@
 0. This code is for Windows PC.
 1. Copy `opr.exe`, `windowspy.exe`, `coor.txt`, `coor_backup.txt`, `dup.png` and `star.png` in root folder to a new directory.
 2. In your own OPR Portal Analysis page, screen shot one of the **star** and **Mark as duplicate** button. After screen shot, use software **Paint** pre-installed in Windows or use any software you like to cut out the black edge of them. Make sure your outcome is similar to the one provided. Then save then as `star.png` & `dup.png` and replace the existing one.
-3. Open `opr.exe`, enable function by `Ctrl+Shift+o`, try some rating function to checkout the basic mechanism in [Control](#control). (This step may not working since you may need your own `coor.txt`. If any warning happens, please just go to next step)
+3. Open `opr.exe`, enable function by `Ctrl+Shift+o`, try some rating function to checkout the basic mechanism in [Control](#control). (This step may not working since you may need your own `coor.txt`. If any warning happens, just ignore this step)
 4. Open the `coor.txt` and `windowspy.exe`, use the `windowspy.exe` to make your own `coor.txt` according to [Setting](#setting).
 5. Once you made your own coordinate `coor.txt`, make a copy of the it (like `coor_backup.txt` in same directory). The program caused some number missing during some of my test run. In this case, your backup will be useful.
 6. Open `opr.exe` and enable function by `Ctrl+Shift+o`, then you can start your OPR.
