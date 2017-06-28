@@ -76,10 +76,10 @@ setupGUI(){
     }
 
     Gui, New
-    Gui, Add, Text,, Star width (all in pixel)
+    Gui, Add, Text,, star.png width (all in pixel)
     Gui, Add, Edit, Number vstarW
     GuiControl,, starW, % Array[1]
-    Gui, Add, Text,, Star height
+    Gui, Add, Text,, star.png height
     Gui, Add, Edit, Number vstarH
     GuiControl,, starH, % Array[2]
     Gui, Add, Text,, Distance between center of two adjacent star
@@ -88,7 +88,7 @@ setupGUI(){
     Gui, Add, Text,, X coordinate for center of "Submit" button (all coordinate in Relative mode, "center" is the place to click)
     Gui, Add, Edit, Number vsubmitX
     GuiControl,, submitX, % Array[4]
-    Gui, Add, Text,, Y coordinate for center of "Submit" button
+    Gui, Add, Text,, Y coordinate for center of "Submit" button (coordinate when scrollbar at the bottom)
     Gui, Add, Edit, Number vsubmitY
     GuiControl,, submitY, % Array[5]
     Gui, Add, Text,, X coordinate for center of "Analyze Next" button (also for "submit" button around the same place)
@@ -109,13 +109,13 @@ setupGUI(){
     Gui, Add, Text,, Y coordinate for center of 5 star of "Is it visually unique?"
     Gui, Add, Edit, Number vmark4Y
     GuiControl,, mark4Y, % Array[11]
-    Gui, Add, Text,, X coordinate for center of 5 star of "Is the location accurate?"
+    Gui, Add, Text,, X coordinate for center of 5 star of "Is the location accurate?" (coordinate when scrollbar at the bottom)
     Gui, Add, Edit, Number vmark5X
     GuiControl,, mark5X, % Array[12]
-    Gui, Add, Text,, Y coordinate for center of 5 star of "Is the location accurate?"
+    Gui, Add, Text,, Y coordinate for center of 5 star of "Is the location accurate?" (coordinate when scrollbar at the bottom)
     Gui, Add, Edit, Number vmark5Y
     GuiControl,, mark5Y, % Array[13]
-    Gui, Add, Text,, Y coordinate for center of 5 star of "Can it be safely accessed?"
+    Gui, Add, Text,, Y coordinate for center of 5 star of "Can it be safely accessed?" (coordinate when scrollbar at the bottom)
     Gui, Add, Edit, Number vmark6Y
     GuiControl,, mark6Y, % Array[14]
     Gui, Add, Button, Default gNext, Next
@@ -508,9 +508,9 @@ oprSubmit(){
 getLocation(ByRef OutputVarX, ByRef OutputVarY){
     global starSearch1X, starSearch1Y, starSearch2X, starSearch2Y
     global starW, starH
-    IfNotExist, save.bmp
+    IfNotExist, star.png
         MsgBox Error: Your file either doesn't exist or isn't in this location.
-    ImageSearch, OutputVarX, OutputVarY, starSearch1X, starSearch1Y, starSearch2X, starSearch2Y, *100 save.bmp
+    ImageSearch, OutputVarX, OutputVarY, starSearch1X, starSearch1Y, starSearch2X, starSearch2Y, *100 star.png
     OutputVarX := Floor(OutputVarX + starW / 2)
     OutputVarY := Floor(OutputVarY + starH / 2)
 }

@@ -1,10 +1,15 @@
 # User Manual
 
 ### Pre
-1. Please copy `opr.exe`, `windowspy.exe`, `dup.png`, `coor.txt` and `save.bmp` to a new directory and open `opr.exe`.
-2. The `coor.txt` is fit to my setup (**Chrome**\\**1920x1080**\\Windows `scale and layout` with `100%`). Even the same setup does not mean it would work. Please capture your own `dup.png` and `save.bmp` and adjust the setting to fit your own setup by `Ctrl+Shift+o`.
-3. To adjust the coordinate, please use the `windowspy.exe` and use the Relative mode for coordinate update. Please make sure that you have selected your web browser for this process.
-4. Once you have your own coordinate `coor.txt` with `Ctrl+Shift+o`, please make a copy of the it (like `coor_backup.txt` in same directory). The program caused some number missing during some of my test run. In this case, your backup will be useful.
+0. This code is for Windows PC.
+1. Copy `opr.exe`, `windowspy.exe`, `coor.txt`, `coor_backup.txt`, `dup.png` and `star.png` in root folder to a new directory.
+2. In your own OPR Portal Analysis page, screen shot one of the **star** and **Mark as duplicate** button. After screen shot, use software **Paint** pre-installed in Windows or use any software you like to cut out the black edge of them. Make sure your outcome is similar to the one provided. Then save then as `star.png` & `dup.png` and replace the existing one.
+2.1 Open `opr.exe`, enable function by `Ctrl+Shift+o`, try some rating function to checkout the basic mechanism in [Control](./README.md).
+3. Open the `coor.txt` and `windowspy.exe`, use the `windowspy.exe` to make your own `coor.txt` according to [Setting](./README.md).
+4. Once you made your own coordinate `coor.txt`, make a copy of the it (like `coor_backup.txt` in same directory). The program caused some number missing during some of my test run. In this case, your backup will be useful.
+5. Open `opr.exe` and enable function by `Ctrl+Shift+o`, then you can start your OPR.
+
+p.s. The `template` folder are some template for `coor.txt` that I tested.
 
 ### Control
 - `Ctrl+Shift+o`: set up the coordinate (automatically update the `coor.txt`), and enable or disable the whole function
@@ -23,22 +28,23 @@
 - `Space`: submit
 - `esc`: stop the script
 
-### Setting (based on my setup)
+### Setting 
+**(my personal setup)** 
 All in pixel, all coordinate in Relative mode. "center" is just for the place to click, may not be exactly center of the star or button.
-- `30`: Star width
-- `26`: Star height
+- `30`: star.png width
+- `26`: star.png height
 - `40`: Distance between center of two adjacent star
-- `980`: X coordinate for center of "Submit" button
-- `880`: Y coordinate for center of "Submit" button
+- `980`: X coordinate for center of "Submit" button (coordinate when scrollbar at the bottom)
+- `880`: Y coordinate for center of "Submit" button (coordinate when scrollbar at the bottom)
 - `1000`: X coordinate for center of "Analyze Next" button (also for "submit" button around the same place)
 - `300`: Y coordinate for center of "Analyze Next" button (also for "submit" button around the same place)
 - `1445`: X coordinate for center of 5 star of "Is the title accurate?"
 - `170`: Y coordinate for center of 5 star of "Is the title accurate?"
 - `220`: Y coordinate for center of 5 star of "Is it historically or culturally significant?"
 - `280`: Y coordinate for center of 5 star of "Is it visually unique?"
-- `760`: X coordinate for center of 5 star of "Is the location accurate?"
-- `670`: Y coordinate for center of 5 star of "Is the location accurate?"
-- `755`: Y coordinate for center of 5 star of "Can it be safely accessed?"
+- `760`: X coordinate for center of 5 star of "Is the location accurate?" (coordinate when scrollbar at the bottom)
+- `670`: Y coordinate for center of 5 star of "Is the location accurate?" (coordinate when scrollbar at the bottom)
+- `755`: Y coordinate for center of 5 star of "Can it be safely accessed?" (coordinate when scrollbar at the bottom)
 - `640`: X coordinate for upper left point for searching "Should this be a portal?" 5 star
 - `260`: Y coordinate for upper left point for searching "Should this be a portal?" 5 star
 - `690`: X coordinate for lower right point for searching "Should this be a portal?" 5 star
