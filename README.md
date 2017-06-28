@@ -24,7 +24,7 @@
 - `esc`: stop the script
 
 ### Setting (based on my setup)
-All in pixel, all coordinate in Relative mode, "center" is the place to click
+All in pixel, all coordinate in Relative mode. "center" is just for the place to click, may not be exactly center of the star or button.
 - `30`: Star width
 - `26`: Star height
 - `40`: Distance between center of two adjacent star
