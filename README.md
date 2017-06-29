@@ -29,7 +29,8 @@ p.s. The `template` folder are some template for `coor.txt` that I tested.
 - `esc`: stop the script
 
 ### Setting 
-**(my personal setup)** 
+**(number based on my personal setup)** 
+
 All in pixel, all coordinate in Relative mode. "center" is just for the place to click, may not be exactly center of the star or button.
 - `30`: star.png width
 - `26`: star.png height
