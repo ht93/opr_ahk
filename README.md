@@ -45,11 +45,14 @@ All in pixel, all coordinate in Relative mode. "center" is just for the place to
 - `760`: X coordinate for center of 5 star of "Is the location accurate?" (coordinate when scrollbar at the bottom)
 - `670`: Y coordinate for center of 5 star of "Is the location accurate?" (coordinate when scrollbar at the bottom)
 - `755`: Y coordinate for center of 5 star of "Can it be safely accessed?" (coordinate when scrollbar at the bottom)
-- `640`: X coordinate for upper left point for searching "Should this be a portal?" 5 star
+- `640`: X coordinate for upper left point for searching "Should this be a portal?" 5 star (check the figure below)
 - `260`: Y coordinate for upper left point for searching "Should this be a portal?" 5 star
 - `690`: X coordinate for lower right point for searching "Should this be a portal?" 5 star
 - `640`: Y coordinate for lower right point for searching "Should this be a portal?" 5 star
-- `970`: X coordinate for upper left point for searching "Mark as duplicate."
+- `970`: X coordinate for upper left point for searching "Mark as duplicate." (check the figure below)
 - `500`: Y coordinate for upper left point for searching "Mark as duplicate."
 - `1575`: X coordinate for lower right point for searching "Mark as duplicate."
 - `900`: Y coordinate for lower right point for searching "Mark as duplicate."
+
+The searching box is not very strict as long as it include the image used to search regardless the changing of the image height. Make sure that star searching box does not contain the #4 star.
+![figure](extra/box.png)
