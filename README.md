@@ -2,17 +2,17 @@
 
 ### Pre
 0. This code is for Windows PC.
-1. Copy `opr.exe`, `windowspy.exe`, `coor.txt`, `coor_backup.txt`, `dup.png` and `star.png` in root folder to a new directory.
+1. Copy `opr.exe`, `windowspy.exe`, `coor.txt`, `coor_real.txt`, `dup.png` and `star.png` in root folder to a new directory.
 2. In your own OPR Portal Analysis page, screen shot one of the **star** and **Mark as duplicate** button. After screen shot, use Windows pre-installed software **Paint** or any software you like to cut out the black edge of them. Make sure your outcome is similar to the provided `dup.png` and `star.png`. Then save them as `star.png` & `dup.png` and replace the existing one.
-3. Open `opr.exe`, enable function by `Ctrl+Shift+o`, try some rating function to checkout the basic mechanism in [Control](#control). (This step may not working since you may need your own `coor.txt`. If any warning happens, just ignore this step. Or it works totally fine, you can skip step 4)
-4. Open the `coor.txt` and `windowspy.exe`, use the `windowspy.exe` to make your own `coor.txt` according to [Setting](#setting).
-5. Once you made your own coordinate `coor.txt`, make a copy of the it (like `coor_backup.txt` in same directory). The program caused some number missing during some of my test run. In this case, your backup will be useful.
+3. Open `opr.exe`, enable function by `Ctrl+Shift+o`, try some rating function to checkout the basic mechanism in [Control](#control). (This step may not working since you may need your own `coor_real.txt`. If any warning happens, just ignore this step. Or it works totally fine, you can skip step 4)
+4. Open the `coor_real.txt` and `windowspy.exe`, use the `windowspy.exe` to make your own `coor_real.txt` according to [Setting](#setting).
+5. Once you made your own coordinate `coor_real.txt`, make a copy of the it (save it to the template directory).
 6. Open `opr.exe` and enable function by `Ctrl+Shift+o`, then you can start your OPR.
 
-p.s. The `template` folder are some template for `coor.txt` that I tested.
+p.s. The `template` folder are some template for `coor_real.txt` that I tested.
 
 ### Control
-- `Ctrl+Shift+o`: set up the coordinate (automatically update the `coor.txt`), and enable or disable the whole function
+- `Ctrl+Shift+o`: set up the coordinate (automatically generate the `coor.txt`), and enable or disable the whole function
 - `Ctrl+Shift+p`: User manual and current state
 - `z`: 1 star
 - `a`: duplicate (left click on the duplicated picture by yourself)

@@ -70,7 +70,7 @@ setupGUI(){
     Array := Object()
 
     ; Write to the array:
-    Loop, Read, coor.txt ; This loop retrieves each line from the file, one at a time.
+    Loop, Read, coor_real.txt ; This loop retrieves each line from the file, one at a time.
     {
         Array.Insert(A_LoopReadLine) ; Append this line to the array.
     }
