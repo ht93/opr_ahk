@@ -63,3 +63,5 @@ All in pixel, all coordinate in Relative mode. "center" is just for the place to
 The searching box is not very strict as long as it include the image used to search regardless the changing of the image height. Make sure that star searching box does not contain the #4 star.
 这个搜索框要保证包括你截的图，不建议太大，类似下图即可，搜索星星的要保证不包括第四颗星星。
 ![figure](extra/box.png)
+
+<img src="https://3.bp.blogspot.com/-szaDUQXe_ak/WWUJ85ysh5I/AAAAAAAAB3o/joW-ItRpiCU6o_FyB-CMpCQ1XU4QFaI3QCEwYBhgL/s1600/image2.png" height="300" />
